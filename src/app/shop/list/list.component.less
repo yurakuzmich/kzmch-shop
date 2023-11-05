@@ -1,6 +1,8 @@
 .items {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
+  gap: 10px;
 }
 
 .item {
@@ -8,8 +10,8 @@
   flex-direction: column;
   justify-content: flex-start;
   box-sizing: border-box;
-  width: 300px;
-  margin: 10px;
+  max-width: 250;
+  padding: 10px;
   border: 2px solid gray;
   border-radius: 5px;
 }
