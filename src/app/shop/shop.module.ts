@@ -9,6 +9,8 @@ import { FilterComponent } from './filter/filter.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AddItemComponent } from './add-item/add-item.component';
 import { AmplifyAuthenticatorModule } from '@aws-amplify/ui-angular';
+import { LandingComponent } from './landing/landing.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -18,10 +20,12 @@ import { AmplifyAuthenticatorModule } from '@aws-amplify/ui-angular';
     ListComponent,
     ItemComponent,
     FilterComponent,
-    AddItemComponent
+    AddItemComponent,
+    LandingComponent
   ],
   imports: [
     CommonModule,
+    RouterModule,
     FormsModule,
     ReactiveFormsModule,
     AmplifyAuthenticatorModule,
