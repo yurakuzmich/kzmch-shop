@@ -8,6 +8,7 @@ import { ItemComponent } from './item/item.component';
 import { FilterComponent } from './filter/filter.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AddItemComponent } from './add-item/add-item.component';
+import { AmplifyAuthenticatorModule } from '@aws-amplify/ui-angular';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { AddItemComponent } from './add-item/add-item.component';
   imports: [
     CommonModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AmplifyAuthenticatorModule,
   ]
 })
 export class ShopModule { }

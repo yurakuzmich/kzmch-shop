@@ -1,4 +1,35 @@
-<h3>Add Item</h3>
+<amplify-authenticator>
+  <ng-template
+    amplifySlot="authenticated"
+    let-user="user"
+    let-signOut="signOut"
+  >
+
+  <h3>Add Item</h3>
+  <div class="form-body">
+    <form autocomplete="off"
+    [formGroup]="createForm"
+    (ngSubmit)="onCreate(createForm.value)">
+    <div>
+      <label>Name: </label>
+      <input type="text" formControlName="name" autocomplete="off" />
+    </div>
+    <div>
+      <label>Description: </label>
+      <input type="text" formControlName="description" autocomplete="off" />
+    </div>
+    <button type="submit">Submit</button>
+    </form>
+  </div>
+
+  <br> <br>
+    <button (click)="signOut()">Sign Out</button>
+  </ng-template>
+</amplify-authenticator>
+
+
+
+<!-- <h3>Add Item</h3>
 <div class="form-body">
   <form autocomplete="off"
   [formGroup]="createForm"
@@ -13,4 +44,4 @@
   </div>
   <button type="submit">Submit</button>
   </form>
-</div>
+</div> -->

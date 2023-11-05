@@ -17,6 +17,12 @@
       },
       "auth": {
         "kzmchshopc1474c32": {}
+      },
+      "hosting": {
+        "amplifyhosting": {
+          "appId": "d7995y4c0wv5j",
+          "type": "manual"
+        }
       }
     }
   }
