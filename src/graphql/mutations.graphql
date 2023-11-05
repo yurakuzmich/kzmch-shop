@@ -1,0 +1,43 @@
+# this is an auto generated file. This will be overwritten
+
+mutation CreateShopItem(
+  $input: CreateShopItemInput!
+  $condition: ModelShopItemConditionInput
+) {
+  createShopItem(input: $input, condition: $condition) {
+    id
+    name
+    description
+    createdAt
+    updatedAt
+    __typename
+  }
+}
+
+mutation UpdateShopItem(
+  $input: UpdateShopItemInput!
+  $condition: ModelShopItemConditionInput
+) {
+  updateShopItem(input: $input, condition: $condition) {
+    id
+    name
+    description
+    createdAt
+    updatedAt
+    __typename
+  }
+}
+
+mutation DeleteShopItem(
+  $input: DeleteShopItemInput!
+  $condition: ModelShopItemConditionInput
+) {
+  deleteShopItem(input: $input, condition: $condition) {
+    id
+    name
+    description
+    createdAt
+    updatedAt
+    __typename
+  }
+}

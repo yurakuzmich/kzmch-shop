@@ -6,6 +6,8 @@ import { CatalogComponent } from './catalog/catalog.component';
 import { ListComponent } from './list/list.component';
 import { ItemComponent } from './item/item.component';
 import { FilterComponent } from './filter/filter.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AddItemComponent } from './add-item/add-item.component';
 
 @NgModule({
   declarations: [
@@ -14,10 +16,13 @@ import { FilterComponent } from './filter/filter.component';
     CatalogComponent,
     ListComponent,
     ItemComponent,
-    FilterComponent
+    FilterComponent,
+    AddItemComponent
   ],
   imports: [
     CommonModule,
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class ShopModule { }

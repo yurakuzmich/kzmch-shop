@@ -1,0 +1,34 @@
+# this is an auto generated file. This will be overwritten
+
+subscription OnCreateShopItem($filter: ModelSubscriptionShopItemFilterInput) {
+  onCreateShopItem(filter: $filter) {
+    id
+    name
+    description
+    createdAt
+    updatedAt
+    __typename
+  }
+}
+
+subscription OnUpdateShopItem($filter: ModelSubscriptionShopItemFilterInput) {
+  onUpdateShopItem(filter: $filter) {
+    id
+    name
+    description
+    createdAt
+    updatedAt
+    __typename
+  }
+}
+
+subscription OnDeleteShopItem($filter: ModelSubscriptionShopItemFilterInput) {
+  onDeleteShopItem(filter: $filter) {
+    id
+    name
+    description
+    createdAt
+    updatedAt
+    __typename
+  }
+}

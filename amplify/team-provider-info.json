@@ -1,0 +1,20 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-kzmchshop-dev-170709-authRole",
+      "UnauthRoleArn": "arn:aws:iam::870819353550:role/amplify-kzmchshop-dev-170709-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::870819353550:role/amplify-kzmchshop-dev-170709-authRole",
+      "Region": "eu-west-1",
+      "DeploymentBucketName": "amplify-kzmchshop-dev-170709-deployment",
+      "UnauthRoleName": "amplify-kzmchshop-dev-170709-unauthRole",
+      "StackName": "amplify-kzmchshop-dev-170709",
+      "StackId": "arn:aws:cloudformation:eu-west-1:870819353550:stack/amplify-kzmchshop-dev-170709/da49ce50-7bd3-11ee-9280-02e839c99523",
+      "AmplifyAppId": "d7995y4c0wv5j"
+    },
+    "categories": {
+      "api": {
+        "kzmchshop": {}
+      }
+    }
+  }
+}
