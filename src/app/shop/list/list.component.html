@@ -1,1 +1,8 @@
 <h3>All Items</h3>
+<div class="items">
+  <div *ngFor="let shopItem of shopItemsList" class="item">
+    <div>{{ shopItem?.name }}</div>
+    <div>{{ shopItem?.description }}</div>
+  </div>
+</div>
+
