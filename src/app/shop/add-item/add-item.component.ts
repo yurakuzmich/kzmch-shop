@@ -26,7 +26,13 @@ export class AddItemComponent {
   public get isSubmitDisabled() { return this.createForm.invalid || this.isImageLoading; }
 
   async onImageSelected(event: any) {
+
     const file = event.target.files[0];
+    if (file.size > 2097152) {
+      alert('The file is toooo big. Put it in your ass and choose a file less than 2MB!');
+      return;
+    }
+
     try {
       this.isImageLoading = true;
       const uniqueName = this.generateUniqueFileName(file.name);
