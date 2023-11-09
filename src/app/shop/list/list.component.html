@@ -1,8 +1,9 @@
 <h3>All Items</h3>
 <div class="items">
   <div *ngFor="let shopItem of shopItemsList" class="item">
-    <div>{{ shopItem?.name }}</div>
-    <div>{{ shopItem?.description }}</div>
+    <!-- <div>{{ shopItem?.name }}</div>
+    <div>{{ shopItem?.description }}</div> -->
+    <app-item [shopItem]="shopItem"></app-item>
   </div>
 </div>
 

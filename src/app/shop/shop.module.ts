@@ -11,6 +11,8 @@ import { AddItemComponent } from './add-item/add-item.component';
 import { AmplifyAuthenticatorModule } from '@aws-amplify/ui-angular';
 import { LandingComponent } from './landing/landing.component';
 import { RouterModule } from '@angular/router';
+import { ItemPageComponent } from './item-page/item-page.component';
+import { BackButtonComponent } from '../layout/back-button/back-button.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,8 @@ import { RouterModule } from '@angular/router';
     ItemComponent,
     FilterComponent,
     AddItemComponent,
-    LandingComponent
+    LandingComponent,
+    ItemPageComponent,
   ],
   imports: [
     CommonModule,
@@ -29,6 +32,7 @@ import { RouterModule } from '@angular/router';
     FormsModule,
     ReactiveFormsModule,
     AmplifyAuthenticatorModule,
+    BackButtonComponent,
   ]
 })
 export class ShopModule { }

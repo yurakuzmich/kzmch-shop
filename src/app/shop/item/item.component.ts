@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { APIService, ShopItem } from 'src/app/API.service';
+
 
 @Component({
   selector: 'app-item',
@@ -6,5 +8,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./item.component.less']
 })
 export class ItemComponent {
-
+  @Input() shopItem!: ShopItem;
 }
