@@ -8,6 +8,7 @@ mutation CreateShopItem(
     id
     name
     description
+    image
     createdAt
     updatedAt
     __typename
@@ -22,6 +23,7 @@ mutation UpdateShopItem(
     id
     name
     description
+    image
     createdAt
     updatedAt
     __typename
@@ -36,6 +38,7 @@ mutation DeleteShopItem(
     id
     name
     description
+    image
     createdAt
     updatedAt
     __typename

@@ -16,5 +16,11 @@ export type AmplifyDependentResourcesAttributes = {
       "UserPoolId": "string",
       "UserPoolName": "string"
     }
+  },
+  "storage": {
+    "kzmchshopimages": {
+      "BucketName": "string",
+      "Region": "string"
+    }
   }
 }

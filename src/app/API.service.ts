@@ -19,11 +19,13 @@ export type CreateShopItemInput = {
   id?: string | null;
   name: string;
   description: string;
+  image?: string | null;
 };
 
 export type ModelShopItemConditionInput = {
   name?: ModelStringInput | null;
   description?: ModelStringInput | null;
+  image?: ModelStringInput | null;
   and?: Array<ModelShopItemConditionInput | null> | null;
   or?: Array<ModelShopItemConditionInput | null> | null;
   not?: ModelShopItemConditionInput | null;
@@ -73,6 +75,7 @@ export type ShopItem = {
   id: string;
   name: string;
   description: string;
+  image?: string | null;
   createdAt: string;
   updatedAt: string;
 };
@@ -81,6 +84,7 @@ export type UpdateShopItemInput = {
   id: string;
   name?: string | null;
   description?: string | null;
+  image?: string | null;
 };
 
 export type DeleteShopItemInput = {
@@ -91,6 +95,7 @@ export type ModelShopItemFilterInput = {
   id?: ModelIDInput | null;
   name?: ModelStringInput | null;
   description?: ModelStringInput | null;
+  image?: ModelStringInput | null;
   and?: Array<ModelShopItemFilterInput | null> | null;
   or?: Array<ModelShopItemFilterInput | null> | null;
   not?: ModelShopItemFilterInput | null;
@@ -122,6 +127,7 @@ export type ModelSubscriptionShopItemFilterInput = {
   id?: ModelSubscriptionIDInput | null;
   name?: ModelSubscriptionStringInput | null;
   description?: ModelSubscriptionStringInput | null;
+  image?: ModelSubscriptionStringInput | null;
   and?: Array<ModelSubscriptionShopItemFilterInput | null> | null;
   or?: Array<ModelSubscriptionShopItemFilterInput | null> | null;
 };
@@ -161,6 +167,7 @@ export type CreateShopItemMutation = {
   id: string;
   name: string;
   description: string;
+  image?: string | null;
   createdAt: string;
   updatedAt: string;
 };
@@ -170,6 +177,7 @@ export type UpdateShopItemMutation = {
   id: string;
   name: string;
   description: string;
+  image?: string | null;
   createdAt: string;
   updatedAt: string;
 };
@@ -179,6 +187,7 @@ export type DeleteShopItemMutation = {
   id: string;
   name: string;
   description: string;
+  image?: string | null;
   createdAt: string;
   updatedAt: string;
 };
@@ -188,6 +197,7 @@ export type GetShopItemQuery = {
   id: string;
   name: string;
   description: string;
+  image?: string | null;
   createdAt: string;
   updatedAt: string;
 };
@@ -199,6 +209,7 @@ export type ListShopItemsQuery = {
     id: string;
     name: string;
     description: string;
+    image?: string | null;
     createdAt: string;
     updatedAt: string;
   } | null>;
@@ -210,6 +221,7 @@ export type OnCreateShopItemSubscription = {
   id: string;
   name: string;
   description: string;
+  image?: string | null;
   createdAt: string;
   updatedAt: string;
 };
@@ -219,6 +231,7 @@ export type OnUpdateShopItemSubscription = {
   id: string;
   name: string;
   description: string;
+  image?: string | null;
   createdAt: string;
   updatedAt: string;
 };
@@ -228,6 +241,7 @@ export type OnDeleteShopItemSubscription = {
   id: string;
   name: string;
   description: string;
+  image?: string | null;
   createdAt: string;
   updatedAt: string;
 };
@@ -246,6 +260,7 @@ export class APIService {
           id
           name
           description
+          image
           createdAt
           updatedAt
         }
@@ -271,6 +286,7 @@ export class APIService {
           id
           name
           description
+          image
           createdAt
           updatedAt
         }
@@ -296,6 +312,7 @@ export class APIService {
           id
           name
           description
+          image
           createdAt
           updatedAt
         }
@@ -318,6 +335,7 @@ export class APIService {
           id
           name
           description
+          image
           createdAt
           updatedAt
         }
@@ -343,6 +361,7 @@ export class APIService {
             id
             name
             description
+            image
             createdAt
             updatedAt
           }
@@ -375,6 +394,7 @@ export class APIService {
           id
           name
           description
+          image
           createdAt
           updatedAt
         }
@@ -401,6 +421,7 @@ export class APIService {
           id
           name
           description
+          image
           createdAt
           updatedAt
         }
@@ -427,6 +448,7 @@ export class APIService {
           id
           name
           description
+          image
           createdAt
           updatedAt
         }

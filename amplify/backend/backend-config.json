@@ -69,5 +69,12 @@
         }
       ]
     }
+  },
+  "storage": {
+    "kzmchshopimages": {
+      "dependsOn": [],
+      "providerPlugin": "awscloudformation",
+      "service": "S3"
+    }
   }
 }

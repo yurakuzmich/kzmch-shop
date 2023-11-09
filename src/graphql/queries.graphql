@@ -5,6 +5,7 @@ query GetShopItem($id: ID!) {
     id
     name
     description
+    image
     createdAt
     updatedAt
     __typename
@@ -21,6 +22,7 @@ query ListShopItems(
       id
       name
       description
+      image
       createdAt
       updatedAt
       __typename

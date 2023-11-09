@@ -5,6 +5,7 @@ subscription OnCreateShopItem($filter: ModelSubscriptionShopItemFilterInput) {
     id
     name
     description
+    image
     createdAt
     updatedAt
     __typename
@@ -16,6 +17,7 @@ subscription OnUpdateShopItem($filter: ModelSubscriptionShopItemFilterInput) {
     id
     name
     description
+    image
     createdAt
     updatedAt
     __typename
@@ -27,6 +29,7 @@ subscription OnDeleteShopItem($filter: ModelSubscriptionShopItemFilterInput) {
     id
     name
     description
+    image
     createdAt
     updatedAt
     __typename

@@ -1,0 +1,16 @@
+{
+  "resourceName": "kzmchshopimages",
+  "policyUUID": "58e0161a",
+  "bucketName": "kzmchshop8f6956639a674123b90f28929eec91fe",
+  "storageAccess": "authAndGuest",
+  "guestAccess": [
+    "READ"
+  ],
+  "authAccess": [
+    "CREATE_AND_UPDATE",
+    "READ",
+    "DELETE"
+  ],
+  "triggerFunction": "NONE",
+  "groupAccess": {}
+}

@@ -1,6 +1,11 @@
 <h3>{{ (shopItem$ | async)?.name }} - Details page</h3>
 
 <p>{{ (shopItem$ | async)?.description }}</p>
+<p *ngIf="isImageLoaded">
+  <img src="{{ (shopItem$ | async)?.image }}" alt="" width="500">
+</p>
+
+
 
 <p>
   <app-back-button></app-back-button>

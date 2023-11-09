@@ -11,14 +11,24 @@
     [formGroup]="createForm"
     (ngSubmit)="onCreate(createForm.value)">
     <div>
-      <label>Name: </label>
-      <input type="text" formControlName="name" autocomplete="off" />
+      <label for="itemName">Name: </label>
+      <input type="text" id="itemName" formControlName="name" autocomplete="off" />
     </div>
     <div>
-      <label>Description: </label>
-      <input type="text" formControlName="description" autocomplete="off" />
+      <label for="itemDescription">Description: </label>
+      <input type="text" id="itemDescription" formControlName="description" autocomplete="off" />
     </div>
-    <button type="submit">Submit</button>
+    <div *ngIf="!isImageLoaded">
+      <label for="itemImage">Image: </label>
+      <input type="file" id="itemImage" (change)="onImageSelected($event)">
+    </div>
+    <div *ngIf="isImageLoading">
+      IMG IS LOADING. PLEASE WAIT...
+    </div>
+    <div *ngIf="isImageLoaded">
+      <img src="{{ loadedImageLink }}" alt="" width="200">
+    </div>
+    <button type="submit"  [disabled]="isSubmitDisabled">Submit</button>
     </form>
   </div>
 
