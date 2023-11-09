@@ -7,7 +7,7 @@ import { ItemPageComponent } from './shop/item-page/item-page.component';
 
 const routes: Routes = [
   {path: 'catalog', component: CatalogComponent},
-  {path: 'catalog/item/:id', component: ItemPageComponent},
+  {path: 'catalog/:id', component: ItemPageComponent},
   {path: 'add-item', component: AddItemComponent},
   {path: 'landing', component: LandingComponent},
   {path: '', redirectTo: '/landing', pathMatch: 'full'},
