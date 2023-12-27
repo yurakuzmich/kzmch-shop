@@ -60,7 +60,7 @@ export class AddItemComponent {
       .then(() => {
         console.log('Item created');
         this.createForm.reset();
-        this.router.navigate(['/catalog']);
+        this.router.navigate(['/admin']);
       })
       .catch((e) => {
         console.log('Error creating Item: ', e);

@@ -1,18 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { APIService, ShopItem } from 'src/app/API.service';
 import { ZenObservable } from 'zen-observable-ts';
 
 @Component({
-  selector: 'app-list',
-  templateUrl: './list.component.html',
-  styleUrls: ['./list.component.less']
+  selector: 'app-list-items-admin',
+  templateUrl: './list-items-admin.component.html',
+  styleUrls: ['./list-items-admin.component.less']
 })
-export class ListComponent implements OnInit {
+export class ListItemsAdminComponent {
   public shopItemsList: Array<ShopItem> = [];
 
   private createItemSubscription: ZenObservable.Subscription | null = null;
   private deleteItemSubscription: ZenObservable.Subscription | null = null;
-  private updateItemSubscription: ZenObservable.Subscription | null = null;
   private subscriptions: ZenObservable.Subscription[] = [];
 
   constructor(private api: APIService) { }
@@ -33,12 +32,14 @@ export class ListComponent implements OnInit {
       this.shopItemsList = this.shopItemsList.filter((item) => item.id !== deletedShopItem.id);
     });
 
-    this.updateItemSubscription = this.api.OnUpdateShopItemListener().subscribe((event: any) => {
-      const updatedShopItem = event.value.data?.onUpdateShopItem;
-      this.shopItemsList = this.shopItemsList.map((item) => item.id === updatedShopItem.id ? updatedShopItem : item);
-    });
+    this.subscriptions = [this.createItemSubscription, this.deleteItemSubscription];
+  }
 
-    this.subscriptions = [this.createItemSubscription, this.deleteItemSubscription, this.updateItemSubscription];
+  deleteItem(id: string) {
+    this.api.DeleteShopItem({id});
+    console.log(this.shopItemsList);
+    alert('Item deleted');
+    return false;
   }
 
   ngOnDestroy() {

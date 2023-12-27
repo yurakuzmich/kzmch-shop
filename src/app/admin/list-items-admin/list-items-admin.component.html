@@ -1,0 +1,8 @@
+<div class="tools">
+  <button routerLink="/admin/add-item">Add Item</button>
+</div>
+<div class="items">
+  <div *ngFor="let shopItem of shopItemsList; let i = index" class="item">
+    <app-item-admin [shopItem]="shopItem" [index]="i+1" (deleteItem)="deleteItem($event)"></app-item-admin>
+  </div>
+</div>

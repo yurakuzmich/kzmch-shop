@@ -7,7 +7,6 @@ import { ListComponent } from './list/list.component';
 import { ItemComponent } from './item/item.component';
 import { FilterComponent } from './filter/filter.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { AddItemComponent } from './add-item/add-item.component';
 import { AmplifyAuthenticatorModule } from '@aws-amplify/ui-angular';
 import { LandingComponent } from './landing/landing.component';
 import { RouterModule } from '@angular/router';
@@ -22,7 +21,6 @@ import { BackButtonComponent } from '../layout/back-button/back-button.component
     ListComponent,
     ItemComponent,
     FilterComponent,
-    AddItemComponent,
     LandingComponent,
     ItemPageComponent,
   ],

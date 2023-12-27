@@ -1,0 +1,15 @@
+<amplify-authenticator>
+  <ng-template
+    amplifySlot="authenticated"
+    let-user="user"
+    let-signOut="signOut"
+  >
+    <div class="admin-header">
+      <h3>Admin Panel</h3>
+      <app-menu-admin></app-menu-admin>
+      <app-sign-out-admin></app-sign-out-admin>
+    </div>
+    <router-outlet></router-outlet>
+    <!-- <app-list-items-admin></app-list-items-admin> -->
+  </ng-template>
+</amplify-authenticator>
