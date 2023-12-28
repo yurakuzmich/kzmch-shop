@@ -1,0 +1,32 @@
+.form-wrapper {
+  display: flex;
+  flex-direction: row;
+  border: 1px solid rgb(230, 233, 233);
+}
+
+.form-body {
+  width: 50%;
+
+  .form-field {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 5px;
+
+    &:nth-child(2n) {
+      background-color: rgb(230, 233, 233);
+    }
+  }
+}
+
+.item-preview {
+  width: 50%;
+  padding: 10px;
+}
+
+.submit {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding: 10px;
+}

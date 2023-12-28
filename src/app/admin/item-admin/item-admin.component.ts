@@ -14,9 +14,11 @@ export class ItemAdminComponent {
   @Output() deleteItem = new EventEmitter<string>();
 
   public imageUrl = '';
+  public isActive = '';
 
   ngOnInit(): void {
     this.getImageUrl();
+    this.isActive = this.shopItem.active ? 'active' : 'not active';
   }
 
   async getImageUrl() {

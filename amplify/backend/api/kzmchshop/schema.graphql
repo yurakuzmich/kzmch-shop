@@ -1,6 +1,10 @@
-type ShopItem @model  @auth(rules: [{ allow: public }]){
+type ShopItem @model @auth(rules: [{allow: public}]) {
   id: ID!
   name: String!
   description: String!
+  price: String
   image: String
+  active: Boolean!
+  special_offer: Boolean
 }
+ 

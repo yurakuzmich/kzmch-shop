@@ -1,47 +1,44 @@
-  <h3>Add Item</h3>
+<h3>Add Item</h3>
+<div class="form-wrapper">
   <div class="form-body">
     <form autocomplete="off"
     [formGroup]="createForm"
     (ngSubmit)="onCreate(createForm.value)">
-    <div>
+    <div class="form-field">
       <label for="itemName">Name: </label>
       <input type="text" id="itemName" formControlName="name" autocomplete="off" />
     </div>
-    <div>
+    <div class="form-field">
       <label for="itemDescription">Description: </label>
       <input type="text" id="itemDescription" formControlName="description" autocomplete="off" />
     </div>
-    <div *ngIf="!isImageLoaded">
+    <div class="form-field">
+      <label for="itemPrice">Price: </label>
+      <input type="text" id="itemPrice" formControlName="price" autocomplete="off" />
+    </div>
+    <div class="form-field">
+      <label for="isActive">Check me:</label>
+      <input type="checkbox" id="isActive" name="isActive" formControlName="active">
+    </div>
+    <div *ngIf="!isImageLoaded" class="form-field">
       <label for="itemImage">Image: </label>
       <input type="file" id="itemImage" (change)="onImageSelected($event)">
     </div>
-    <div *ngIf="isImageLoading">
+    <div *ngIf="isImageLoading" class="form-field">
       IMG IS LOADING. PLEASE WAIT...
     </div>
-    <div *ngIf="isImageLoaded">
-      <img src="{{ loadedImageLink }}" alt="" width="200">
-    </div>
-    <button type="submit"  [disabled]="isSubmitDisabled">Submit</button>
+    <!-- <button type="submit"  [disabled]="isSubmitDisabled">Submit</button> -->
     </form>
   </div>
 
-
-
-
-
-<!-- <h3>Add Item</h3>
-<div class="form-body">
-  <form autocomplete="off"
-  [formGroup]="createForm"
-  (ngSubmit)="onCreate(createForm.value)">
-  <div>
-    <label>Name: </label>
-    <input type="text" formControlName="name" autocomplete="off" />
+  <div class="item-preview">
+    <h3>{{ currentValue.name }}</h3>
+    <p>{{ currentValue.description }}</p>
+    <div *ngIf="isImageLoaded">
+      <img src="{{ loadedImageLink }}" alt="" width="200">
+    </div>
   </div>
-  <div>
-    <label>Description: </label>
-    <input type="text" formControlName="description" autocomplete="off" />
-  </div>
-  <button type="submit">Submit</button>
-  </form>
-</div> -->
+</div>
+<div class="submit">
+  <button [disabled]="isSubmitDisabled" (click)="onCreate(createForm.value)">Save Item</button>
+</div>

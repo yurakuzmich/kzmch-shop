@@ -8,7 +8,10 @@ mutation CreateShopItem(
     id
     name
     description
+    price
     image
+    active
+    special_offer
     createdAt
     updatedAt
     __typename
@@ -23,7 +26,10 @@ mutation UpdateShopItem(
     id
     name
     description
+    price
     image
+    active
+    special_offer
     createdAt
     updatedAt
     __typename
@@ -38,7 +44,10 @@ mutation DeleteShopItem(
     id
     name
     description
+    price
     image
+    active
+    special_offer
     createdAt
     updatedAt
     __typename

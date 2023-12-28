@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { APIService, ShopItem } from 'src/app/API.service';
 import { ZenObservable } from 'zen-observable-ts';
 
@@ -7,7 +7,7 @@ import { ZenObservable } from 'zen-observable-ts';
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.less']
 })
-export class ListComponent implements OnInit {
+export class ListComponent implements OnInit, OnDestroy {
   public shopItemsList: Array<ShopItem> = [];
 
   private createItemSubscription: ZenObservable.Subscription | null = null;

@@ -19,13 +19,19 @@ export type CreateShopItemInput = {
   id?: string | null;
   name: string;
   description: string;
+  price?: string | null;
   image?: string | null;
+  active: boolean;
+  special_offer?: boolean | null;
 };
 
 export type ModelShopItemConditionInput = {
   name?: ModelStringInput | null;
   description?: ModelStringInput | null;
+  price?: ModelStringInput | null;
   image?: ModelStringInput | null;
+  active?: ModelBooleanInput | null;
+  special_offer?: ModelBooleanInput | null;
   and?: Array<ModelShopItemConditionInput | null> | null;
   or?: Array<ModelShopItemConditionInput | null> | null;
   not?: ModelShopItemConditionInput | null;
@@ -70,12 +76,22 @@ export type ModelSizeInput = {
   between?: Array<number | null> | null;
 };
 
+export type ModelBooleanInput = {
+  ne?: boolean | null;
+  eq?: boolean | null;
+  attributeExists?: boolean | null;
+  attributeType?: ModelAttributeTypes | null;
+};
+
 export type ShopItem = {
   __typename: "ShopItem";
   id: string;
   name: string;
   description: string;
+  price?: string | null;
   image?: string | null;
+  active: boolean;
+  special_offer?: boolean | null;
   createdAt: string;
   updatedAt: string;
 };
@@ -84,7 +100,10 @@ export type UpdateShopItemInput = {
   id: string;
   name?: string | null;
   description?: string | null;
+  price?: string | null;
   image?: string | null;
+  active?: boolean | null;
+  special_offer?: boolean | null;
 };
 
 export type DeleteShopItemInput = {
@@ -95,7 +114,10 @@ export type ModelShopItemFilterInput = {
   id?: ModelIDInput | null;
   name?: ModelStringInput | null;
   description?: ModelStringInput | null;
+  price?: ModelStringInput | null;
   image?: ModelStringInput | null;
+  active?: ModelBooleanInput | null;
+  special_offer?: ModelBooleanInput | null;
   and?: Array<ModelShopItemFilterInput | null> | null;
   or?: Array<ModelShopItemFilterInput | null> | null;
   not?: ModelShopItemFilterInput | null;
@@ -127,7 +149,10 @@ export type ModelSubscriptionShopItemFilterInput = {
   id?: ModelSubscriptionIDInput | null;
   name?: ModelSubscriptionStringInput | null;
   description?: ModelSubscriptionStringInput | null;
+  price?: ModelSubscriptionStringInput | null;
   image?: ModelSubscriptionStringInput | null;
+  active?: ModelSubscriptionBooleanInput | null;
+  special_offer?: ModelSubscriptionBooleanInput | null;
   and?: Array<ModelSubscriptionShopItemFilterInput | null> | null;
   or?: Array<ModelSubscriptionShopItemFilterInput | null> | null;
 };
@@ -162,12 +187,20 @@ export type ModelSubscriptionStringInput = {
   notIn?: Array<string | null> | null;
 };
 
+export type ModelSubscriptionBooleanInput = {
+  ne?: boolean | null;
+  eq?: boolean | null;
+};
+
 export type CreateShopItemMutation = {
   __typename: "ShopItem";
   id: string;
   name: string;
   description: string;
+  price?: string | null;
   image?: string | null;
+  active: boolean;
+  special_offer?: boolean | null;
   createdAt: string;
   updatedAt: string;
 };
@@ -177,7 +210,10 @@ export type UpdateShopItemMutation = {
   id: string;
   name: string;
   description: string;
+  price?: string | null;
   image?: string | null;
+  active: boolean;
+  special_offer?: boolean | null;
   createdAt: string;
   updatedAt: string;
 };
@@ -187,7 +223,10 @@ export type DeleteShopItemMutation = {
   id: string;
   name: string;
   description: string;
+  price?: string | null;
   image?: string | null;
+  active: boolean;
+  special_offer?: boolean | null;
   createdAt: string;
   updatedAt: string;
 };
@@ -197,7 +236,10 @@ export type GetShopItemQuery = {
   id: string;
   name: string;
   description: string;
+  price?: string | null;
   image?: string | null;
+  active: boolean;
+  special_offer?: boolean | null;
   createdAt: string;
   updatedAt: string;
 };
@@ -209,7 +251,10 @@ export type ListShopItemsQuery = {
     id: string;
     name: string;
     description: string;
+    price?: string | null;
     image?: string | null;
+    active: boolean;
+    special_offer?: boolean | null;
     createdAt: string;
     updatedAt: string;
   } | null>;
@@ -221,7 +266,10 @@ export type OnCreateShopItemSubscription = {
   id: string;
   name: string;
   description: string;
+  price?: string | null;
   image?: string | null;
+  active: boolean;
+  special_offer?: boolean | null;
   createdAt: string;
   updatedAt: string;
 };
@@ -231,7 +279,10 @@ export type OnUpdateShopItemSubscription = {
   id: string;
   name: string;
   description: string;
+  price?: string | null;
   image?: string | null;
+  active: boolean;
+  special_offer?: boolean | null;
   createdAt: string;
   updatedAt: string;
 };
@@ -241,7 +292,10 @@ export type OnDeleteShopItemSubscription = {
   id: string;
   name: string;
   description: string;
+  price?: string | null;
   image?: string | null;
+  active: boolean;
+  special_offer?: boolean | null;
   createdAt: string;
   updatedAt: string;
 };
@@ -260,7 +314,10 @@ export class APIService {
           id
           name
           description
+          price
           image
+          active
+          special_offer
           createdAt
           updatedAt
         }
@@ -286,7 +343,10 @@ export class APIService {
           id
           name
           description
+          price
           image
+          active
+          special_offer
           createdAt
           updatedAt
         }
@@ -312,7 +372,10 @@ export class APIService {
           id
           name
           description
+          price
           image
+          active
+          special_offer
           createdAt
           updatedAt
         }
@@ -335,7 +398,10 @@ export class APIService {
           id
           name
           description
+          price
           image
+          active
+          special_offer
           createdAt
           updatedAt
         }
@@ -361,7 +427,10 @@ export class APIService {
             id
             name
             description
+            price
             image
+            active
+            special_offer
             createdAt
             updatedAt
           }
@@ -394,7 +463,10 @@ export class APIService {
           id
           name
           description
+          price
           image
+          active
+          special_offer
           createdAt
           updatedAt
         }
@@ -421,7 +493,10 @@ export class APIService {
           id
           name
           description
+          price
           image
+          active
+          special_offer
           createdAt
           updatedAt
         }
@@ -448,7 +523,10 @@ export class APIService {
           id
           name
           description
+          price
           image
+          active
+          special_offer
           createdAt
           updatedAt
         }

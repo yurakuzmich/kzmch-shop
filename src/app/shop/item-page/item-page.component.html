@@ -4,6 +4,7 @@
 <p *ngIf="isImageLoaded">
   <img src="{{ (shopItem$ | async)?.image }}" alt="" width="500">
 </p>
+<p>{{ (shopItem$ | async)?.price | currency:'USD' }}</p>
 
 
 

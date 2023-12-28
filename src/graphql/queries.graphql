@@ -5,7 +5,10 @@ query GetShopItem($id: ID!) {
     id
     name
     description
+    price
     image
+    active
+    special_offer
     createdAt
     updatedAt
     __typename
@@ -22,7 +25,10 @@ query ListShopItems(
       id
       name
       description
+      price
       image
+      active
+      special_offer
       createdAt
       updatedAt
       __typename

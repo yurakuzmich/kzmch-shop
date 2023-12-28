@@ -1,6 +1,8 @@
 <div class="index">{{ index }}</div>
 <div>{{shopItem.name}}</div>
 <div>{{ shopItem.description | slice:0:250 }}</div>
+<div>{{ shopItem.price | currency:'USD' }}</div>
+<div>{{ isActive }}</div>
 <div class="toolbox">
   <button>Edit</button>
 </div>
