@@ -1,5 +1,65 @@
 # this is an auto generated file. This will be overwritten
 
+mutation CreateCategory(
+  $input: CreateCategoryInput!
+  $condition: ModelCategoryConditionInput
+) {
+  createCategory(input: $input, condition: $condition) {
+    id
+    name
+    description
+    active
+    image
+    ShopItems {
+      nextToken
+      __typename
+    }
+    createdAt
+    updatedAt
+    __typename
+  }
+}
+
+mutation UpdateCategory(
+  $input: UpdateCategoryInput!
+  $condition: ModelCategoryConditionInput
+) {
+  updateCategory(input: $input, condition: $condition) {
+    id
+    name
+    description
+    active
+    image
+    ShopItems {
+      nextToken
+      __typename
+    }
+    createdAt
+    updatedAt
+    __typename
+  }
+}
+
+mutation DeleteCategory(
+  $input: DeleteCategoryInput!
+  $condition: ModelCategoryConditionInput
+) {
+  deleteCategory(input: $input, condition: $condition) {
+    id
+    name
+    description
+    active
+    image
+    ShopItems {
+      nextToken
+      __typename
+    }
+    createdAt
+    updatedAt
+    __typename
+  }
+}
+
 mutation CreateShopItem(
   $input: CreateShopItemInput!
   $condition: ModelShopItemConditionInput
@@ -12,6 +72,7 @@ mutation CreateShopItem(
     image
     active
     special_offer
+    categoryID
     createdAt
     updatedAt
     __typename
@@ -30,6 +91,7 @@ mutation UpdateShopItem(
     image
     active
     special_offer
+    categoryID
     createdAt
     updatedAt
     __typename
@@ -48,6 +110,7 @@ mutation DeleteShopItem(
     image
     active
     special_offer
+    categoryID
     createdAt
     updatedAt
     __typename

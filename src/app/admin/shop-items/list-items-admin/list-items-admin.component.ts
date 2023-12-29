@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { APIService, ShopItem } from 'src/app/API.service';
 import { ZenObservable } from 'zen-observable-ts';
 
@@ -7,7 +7,7 @@ import { ZenObservable } from 'zen-observable-ts';
   templateUrl: './list-items-admin.component.html',
   styleUrls: ['./list-items-admin.component.less']
 })
-export class ListItemsAdminComponent {
+export class ListItemsAdminComponent implements OnInit, OnDestroy {
   public shopItemsList: Array<ShopItem> = [];
 
   private createItemSubscription: ZenObservable.Subscription | null = null;

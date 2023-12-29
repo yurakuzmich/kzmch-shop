@@ -1,5 +1,43 @@
 # this is an auto generated file. This will be overwritten
 
+query GetCategory($id: ID!) {
+  getCategory(id: $id) {
+    id
+    name
+    description
+    active
+    image
+    ShopItems {
+      nextToken
+      __typename
+    }
+    createdAt
+    updatedAt
+    __typename
+  }
+}
+
+query ListCategories(
+  $filter: ModelCategoryFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listCategories(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      name
+      description
+      active
+      image
+      createdAt
+      updatedAt
+      __typename
+    }
+    nextToken
+    __typename
+  }
+}
+
 query GetShopItem($id: ID!) {
   getShopItem(id: $id) {
     id
@@ -9,6 +47,7 @@ query GetShopItem($id: ID!) {
     image
     active
     special_offer
+    categoryID
     createdAt
     updatedAt
     __typename
@@ -29,6 +68,39 @@ query ListShopItems(
       image
       active
       special_offer
+      categoryID
+      createdAt
+      updatedAt
+      __typename
+    }
+    nextToken
+    __typename
+  }
+}
+
+query ShopItemsByCategoryID(
+  $categoryID: ID!
+  $sortDirection: ModelSortDirection
+  $filter: ModelShopItemFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  shopItemsByCategoryID(
+    categoryID: $categoryID
+    sortDirection: $sortDirection
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+  ) {
+    items {
+      id
+      name
+      description
+      price
+      image
+      active
+      special_offer
+      categoryID
       createdAt
       updatedAt
       __typename

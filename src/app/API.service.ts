@@ -10,31 +10,30 @@ export interface SubscriptionResponse<T> {
 }
 
 export type __SubscriptionContainer = {
+  onCreateCategory: OnCreateCategorySubscription;
+  onUpdateCategory: OnUpdateCategorySubscription;
+  onDeleteCategory: OnDeleteCategorySubscription;
   onCreateShopItem: OnCreateShopItemSubscription;
   onUpdateShopItem: OnUpdateShopItemSubscription;
   onDeleteShopItem: OnDeleteShopItemSubscription;
 };
 
-export type CreateShopItemInput = {
+export type CreateCategoryInput = {
   id?: string | null;
-  name: string;
-  description: string;
-  price?: string | null;
+  name?: string | null;
+  description?: string | null;
+  active?: boolean | null;
   image?: string | null;
-  active: boolean;
-  special_offer?: boolean | null;
 };
 
-export type ModelShopItemConditionInput = {
+export type ModelCategoryConditionInput = {
   name?: ModelStringInput | null;
   description?: ModelStringInput | null;
-  price?: ModelStringInput | null;
-  image?: ModelStringInput | null;
   active?: ModelBooleanInput | null;
-  special_offer?: ModelBooleanInput | null;
-  and?: Array<ModelShopItemConditionInput | null> | null;
-  or?: Array<ModelShopItemConditionInput | null> | null;
-  not?: ModelShopItemConditionInput | null;
+  image?: ModelStringInput | null;
+  and?: Array<ModelCategoryConditionInput | null> | null;
+  or?: Array<ModelCategoryConditionInput | null> | null;
+  not?: ModelCategoryConditionInput | null;
 };
 
 export type ModelStringInput = {
@@ -83,6 +82,24 @@ export type ModelBooleanInput = {
   attributeType?: ModelAttributeTypes | null;
 };
 
+export type Category = {
+  __typename: "Category";
+  id: string;
+  name?: string | null;
+  description?: string | null;
+  active?: boolean | null;
+  image?: string | null;
+  ShopItems?: ModelShopItemConnection | null;
+  createdAt: string;
+  updatedAt: string;
+};
+
+export type ModelShopItemConnection = {
+  __typename: "ModelShopItemConnection";
+  items: Array<ShopItem | null>;
+  nextToken?: string | null;
+};
+
 export type ShopItem = {
   __typename: "ShopItem";
   id: string;
@@ -92,35 +109,45 @@ export type ShopItem = {
   image?: string | null;
   active: boolean;
   special_offer?: boolean | null;
+  categoryID: string;
   createdAt: string;
   updatedAt: string;
 };
 
-export type UpdateShopItemInput = {
+export type UpdateCategoryInput = {
   id: string;
   name?: string | null;
   description?: string | null;
-  price?: string | null;
-  image?: string | null;
   active?: boolean | null;
-  special_offer?: boolean | null;
+  image?: string | null;
 };
 
-export type DeleteShopItemInput = {
+export type DeleteCategoryInput = {
   id: string;
 };
 
-export type ModelShopItemFilterInput = {
-  id?: ModelIDInput | null;
+export type CreateShopItemInput = {
+  id?: string | null;
+  name: string;
+  description: string;
+  price?: string | null;
+  image?: string | null;
+  active: boolean;
+  special_offer?: boolean | null;
+  categoryID: string;
+};
+
+export type ModelShopItemConditionInput = {
   name?: ModelStringInput | null;
   description?: ModelStringInput | null;
   price?: ModelStringInput | null;
   image?: ModelStringInput | null;
   active?: ModelBooleanInput | null;
   special_offer?: ModelBooleanInput | null;
-  and?: Array<ModelShopItemFilterInput | null> | null;
-  or?: Array<ModelShopItemFilterInput | null> | null;
-  not?: ModelShopItemFilterInput | null;
+  categoryID?: ModelIDInput | null;
+  and?: Array<ModelShopItemConditionInput | null> | null;
+  or?: Array<ModelShopItemConditionInput | null> | null;
+  not?: ModelShopItemConditionInput | null;
 };
 
 export type ModelIDInput = {
@@ -139,22 +166,65 @@ export type ModelIDInput = {
   size?: ModelSizeInput | null;
 };
 
-export type ModelShopItemConnection = {
-  __typename: "ModelShopItemConnection";
-  items: Array<ShopItem | null>;
+export type UpdateShopItemInput = {
+  id: string;
+  name?: string | null;
+  description?: string | null;
+  price?: string | null;
+  image?: string | null;
+  active?: boolean | null;
+  special_offer?: boolean | null;
+  categoryID?: string | null;
+};
+
+export type DeleteShopItemInput = {
+  id: string;
+};
+
+export type ModelCategoryFilterInput = {
+  id?: ModelIDInput | null;
+  name?: ModelStringInput | null;
+  description?: ModelStringInput | null;
+  active?: ModelBooleanInput | null;
+  image?: ModelStringInput | null;
+  and?: Array<ModelCategoryFilterInput | null> | null;
+  or?: Array<ModelCategoryFilterInput | null> | null;
+  not?: ModelCategoryFilterInput | null;
+};
+
+export type ModelCategoryConnection = {
+  __typename: "ModelCategoryConnection";
+  items: Array<Category | null>;
   nextToken?: string | null;
 };
 
-export type ModelSubscriptionShopItemFilterInput = {
+export type ModelShopItemFilterInput = {
+  id?: ModelIDInput | null;
+  name?: ModelStringInput | null;
+  description?: ModelStringInput | null;
+  price?: ModelStringInput | null;
+  image?: ModelStringInput | null;
+  active?: ModelBooleanInput | null;
+  special_offer?: ModelBooleanInput | null;
+  categoryID?: ModelIDInput | null;
+  and?: Array<ModelShopItemFilterInput | null> | null;
+  or?: Array<ModelShopItemFilterInput | null> | null;
+  not?: ModelShopItemFilterInput | null;
+};
+
+export enum ModelSortDirection {
+  ASC = "ASC",
+  DESC = "DESC"
+}
+
+export type ModelSubscriptionCategoryFilterInput = {
   id?: ModelSubscriptionIDInput | null;
   name?: ModelSubscriptionStringInput | null;
   description?: ModelSubscriptionStringInput | null;
-  price?: ModelSubscriptionStringInput | null;
-  image?: ModelSubscriptionStringInput | null;
   active?: ModelSubscriptionBooleanInput | null;
-  special_offer?: ModelSubscriptionBooleanInput | null;
-  and?: Array<ModelSubscriptionShopItemFilterInput | null> | null;
-  or?: Array<ModelSubscriptionShopItemFilterInput | null> | null;
+  image?: ModelSubscriptionStringInput | null;
+  and?: Array<ModelSubscriptionCategoryFilterInput | null> | null;
+  or?: Array<ModelSubscriptionCategoryFilterInput | null> | null;
 };
 
 export type ModelSubscriptionIDInput = {
@@ -192,6 +262,64 @@ export type ModelSubscriptionBooleanInput = {
   eq?: boolean | null;
 };
 
+export type ModelSubscriptionShopItemFilterInput = {
+  id?: ModelSubscriptionIDInput | null;
+  name?: ModelSubscriptionStringInput | null;
+  description?: ModelSubscriptionStringInput | null;
+  price?: ModelSubscriptionStringInput | null;
+  image?: ModelSubscriptionStringInput | null;
+  active?: ModelSubscriptionBooleanInput | null;
+  special_offer?: ModelSubscriptionBooleanInput | null;
+  categoryID?: ModelSubscriptionIDInput | null;
+  and?: Array<ModelSubscriptionShopItemFilterInput | null> | null;
+  or?: Array<ModelSubscriptionShopItemFilterInput | null> | null;
+};
+
+export type CreateCategoryMutation = {
+  __typename: "Category";
+  id: string;
+  name?: string | null;
+  description?: string | null;
+  active?: boolean | null;
+  image?: string | null;
+  ShopItems?: {
+    __typename: "ModelShopItemConnection";
+    nextToken?: string | null;
+  } | null;
+  createdAt: string;
+  updatedAt: string;
+};
+
+export type UpdateCategoryMutation = {
+  __typename: "Category";
+  id: string;
+  name?: string | null;
+  description?: string | null;
+  active?: boolean | null;
+  image?: string | null;
+  ShopItems?: {
+    __typename: "ModelShopItemConnection";
+    nextToken?: string | null;
+  } | null;
+  createdAt: string;
+  updatedAt: string;
+};
+
+export type DeleteCategoryMutation = {
+  __typename: "Category";
+  id: string;
+  name?: string | null;
+  description?: string | null;
+  active?: boolean | null;
+  image?: string | null;
+  ShopItems?: {
+    __typename: "ModelShopItemConnection";
+    nextToken?: string | null;
+  } | null;
+  createdAt: string;
+  updatedAt: string;
+};
+
 export type CreateShopItemMutation = {
   __typename: "ShopItem";
   id: string;
@@ -201,6 +329,7 @@ export type CreateShopItemMutation = {
   image?: string | null;
   active: boolean;
   special_offer?: boolean | null;
+  categoryID: string;
   createdAt: string;
   updatedAt: string;
 };
@@ -214,6 +343,7 @@ export type UpdateShopItemMutation = {
   image?: string | null;
   active: boolean;
   special_offer?: boolean | null;
+  categoryID: string;
   createdAt: string;
   updatedAt: string;
 };
@@ -227,8 +357,39 @@ export type DeleteShopItemMutation = {
   image?: string | null;
   active: boolean;
   special_offer?: boolean | null;
+  categoryID: string;
   createdAt: string;
   updatedAt: string;
+};
+
+export type GetCategoryQuery = {
+  __typename: "Category";
+  id: string;
+  name?: string | null;
+  description?: string | null;
+  active?: boolean | null;
+  image?: string | null;
+  ShopItems?: {
+    __typename: "ModelShopItemConnection";
+    nextToken?: string | null;
+  } | null;
+  createdAt: string;
+  updatedAt: string;
+};
+
+export type ListCategoriesQuery = {
+  __typename: "ModelCategoryConnection";
+  items: Array<{
+    __typename: "Category";
+    id: string;
+    name?: string | null;
+    description?: string | null;
+    active?: boolean | null;
+    image?: string | null;
+    createdAt: string;
+    updatedAt: string;
+  } | null>;
+  nextToken?: string | null;
 };
 
 export type GetShopItemQuery = {
@@ -240,6 +401,7 @@ export type GetShopItemQuery = {
   image?: string | null;
   active: boolean;
   special_offer?: boolean | null;
+  categoryID: string;
   createdAt: string;
   updatedAt: string;
 };
@@ -255,10 +417,74 @@ export type ListShopItemsQuery = {
     image?: string | null;
     active: boolean;
     special_offer?: boolean | null;
+    categoryID: string;
     createdAt: string;
     updatedAt: string;
   } | null>;
   nextToken?: string | null;
+};
+
+export type ShopItemsByCategoryIDQuery = {
+  __typename: "ModelShopItemConnection";
+  items: Array<{
+    __typename: "ShopItem";
+    id: string;
+    name: string;
+    description: string;
+    price?: string | null;
+    image?: string | null;
+    active: boolean;
+    special_offer?: boolean | null;
+    categoryID: string;
+    createdAt: string;
+    updatedAt: string;
+  } | null>;
+  nextToken?: string | null;
+};
+
+export type OnCreateCategorySubscription = {
+  __typename: "Category";
+  id: string;
+  name?: string | null;
+  description?: string | null;
+  active?: boolean | null;
+  image?: string | null;
+  ShopItems?: {
+    __typename: "ModelShopItemConnection";
+    nextToken?: string | null;
+  } | null;
+  createdAt: string;
+  updatedAt: string;
+};
+
+export type OnUpdateCategorySubscription = {
+  __typename: "Category";
+  id: string;
+  name?: string | null;
+  description?: string | null;
+  active?: boolean | null;
+  image?: string | null;
+  ShopItems?: {
+    __typename: "ModelShopItemConnection";
+    nextToken?: string | null;
+  } | null;
+  createdAt: string;
+  updatedAt: string;
+};
+
+export type OnDeleteCategorySubscription = {
+  __typename: "Category";
+  id: string;
+  name?: string | null;
+  description?: string | null;
+  active?: boolean | null;
+  image?: string | null;
+  ShopItems?: {
+    __typename: "ModelShopItemConnection";
+    nextToken?: string | null;
+  } | null;
+  createdAt: string;
+  updatedAt: string;
 };
 
 export type OnCreateShopItemSubscription = {
@@ -270,6 +496,7 @@ export type OnCreateShopItemSubscription = {
   image?: string | null;
   active: boolean;
   special_offer?: boolean | null;
+  categoryID: string;
   createdAt: string;
   updatedAt: string;
 };
@@ -283,6 +510,7 @@ export type OnUpdateShopItemSubscription = {
   image?: string | null;
   active: boolean;
   special_offer?: boolean | null;
+  categoryID: string;
   createdAt: string;
   updatedAt: string;
 };
@@ -296,6 +524,7 @@ export type OnDeleteShopItemSubscription = {
   image?: string | null;
   active: boolean;
   special_offer?: boolean | null;
+  categoryID: string;
   createdAt: string;
   updatedAt: string;
 };
@@ -304,6 +533,99 @@ export type OnDeleteShopItemSubscription = {
   providedIn: "root"
 })
 export class APIService {
+  async CreateCategory(
+    input: CreateCategoryInput,
+    condition?: ModelCategoryConditionInput
+  ): Promise<CreateCategoryMutation> {
+    const statement = `mutation CreateCategory($input: CreateCategoryInput!, $condition: ModelCategoryConditionInput) {
+        createCategory(input: $input, condition: $condition) {
+          __typename
+          id
+          name
+          description
+          active
+          image
+          ShopItems {
+            __typename
+            nextToken
+          }
+          createdAt
+          updatedAt
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {
+      input
+    };
+    if (condition) {
+      gqlAPIServiceArguments.condition = condition;
+    }
+    const response = (await API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    )) as any;
+    return <CreateCategoryMutation>response.data.createCategory;
+  }
+  async UpdateCategory(
+    input: UpdateCategoryInput,
+    condition?: ModelCategoryConditionInput
+  ): Promise<UpdateCategoryMutation> {
+    const statement = `mutation UpdateCategory($input: UpdateCategoryInput!, $condition: ModelCategoryConditionInput) {
+        updateCategory(input: $input, condition: $condition) {
+          __typename
+          id
+          name
+          description
+          active
+          image
+          ShopItems {
+            __typename
+            nextToken
+          }
+          createdAt
+          updatedAt
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {
+      input
+    };
+    if (condition) {
+      gqlAPIServiceArguments.condition = condition;
+    }
+    const response = (await API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    )) as any;
+    return <UpdateCategoryMutation>response.data.updateCategory;
+  }
+  async DeleteCategory(
+    input: DeleteCategoryInput,
+    condition?: ModelCategoryConditionInput
+  ): Promise<DeleteCategoryMutation> {
+    const statement = `mutation DeleteCategory($input: DeleteCategoryInput!, $condition: ModelCategoryConditionInput) {
+        deleteCategory(input: $input, condition: $condition) {
+          __typename
+          id
+          name
+          description
+          active
+          image
+          ShopItems {
+            __typename
+            nextToken
+          }
+          createdAt
+          updatedAt
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {
+      input
+    };
+    if (condition) {
+      gqlAPIServiceArguments.condition = condition;
+    }
+    const response = (await API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    )) as any;
+    return <DeleteCategoryMutation>response.data.deleteCategory;
+  }
   async CreateShopItem(
     input: CreateShopItemInput,
     condition?: ModelShopItemConditionInput
@@ -318,6 +640,7 @@ export class APIService {
           image
           active
           special_offer
+          categoryID
           createdAt
           updatedAt
         }
@@ -347,6 +670,7 @@ export class APIService {
           image
           active
           special_offer
+          categoryID
           createdAt
           updatedAt
         }
@@ -376,6 +700,7 @@ export class APIService {
           image
           active
           special_offer
+          categoryID
           createdAt
           updatedAt
         }
@@ -391,6 +716,67 @@ export class APIService {
     )) as any;
     return <DeleteShopItemMutation>response.data.deleteShopItem;
   }
+  async GetCategory(id: string): Promise<GetCategoryQuery> {
+    const statement = `query GetCategory($id: ID!) {
+        getCategory(id: $id) {
+          __typename
+          id
+          name
+          description
+          active
+          image
+          ShopItems {
+            __typename
+            nextToken
+          }
+          createdAt
+          updatedAt
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {
+      id
+    };
+    const response = (await API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    )) as any;
+    return <GetCategoryQuery>response.data.getCategory;
+  }
+  async ListCategories(
+    filter?: ModelCategoryFilterInput,
+    limit?: number,
+    nextToken?: string
+  ): Promise<ListCategoriesQuery> {
+    const statement = `query ListCategories($filter: ModelCategoryFilterInput, $limit: Int, $nextToken: String) {
+        listCategories(filter: $filter, limit: $limit, nextToken: $nextToken) {
+          __typename
+          items {
+            __typename
+            id
+            name
+            description
+            active
+            image
+            createdAt
+            updatedAt
+          }
+          nextToken
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {};
+    if (filter) {
+      gqlAPIServiceArguments.filter = filter;
+    }
+    if (limit) {
+      gqlAPIServiceArguments.limit = limit;
+    }
+    if (nextToken) {
+      gqlAPIServiceArguments.nextToken = nextToken;
+    }
+    const response = (await API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    )) as any;
+    return <ListCategoriesQuery>response.data.listCategories;
+  }
   async GetShopItem(id: string): Promise<GetShopItemQuery> {
     const statement = `query GetShopItem($id: ID!) {
         getShopItem(id: $id) {
@@ -402,6 +788,7 @@ export class APIService {
           image
           active
           special_offer
+          categoryID
           createdAt
           updatedAt
         }
@@ -431,6 +818,7 @@ export class APIService {
             image
             active
             special_offer
+            categoryID
             createdAt
             updatedAt
           }
@@ -452,6 +840,154 @@ export class APIService {
     )) as any;
     return <ListShopItemsQuery>response.data.listShopItems;
   }
+  async ShopItemsByCategoryID(
+    categoryID: string,
+    sortDirection?: ModelSortDirection,
+    filter?: ModelShopItemFilterInput,
+    limit?: number,
+    nextToken?: string
+  ): Promise<ShopItemsByCategoryIDQuery> {
+    const statement = `query ShopItemsByCategoryID($categoryID: ID!, $sortDirection: ModelSortDirection, $filter: ModelShopItemFilterInput, $limit: Int, $nextToken: String) {
+        shopItemsByCategoryID(
+          categoryID: $categoryID
+          sortDirection: $sortDirection
+          filter: $filter
+          limit: $limit
+          nextToken: $nextToken
+        ) {
+          __typename
+          items {
+            __typename
+            id
+            name
+            description
+            price
+            image
+            active
+            special_offer
+            categoryID
+            createdAt
+            updatedAt
+          }
+          nextToken
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {
+      categoryID
+    };
+    if (sortDirection) {
+      gqlAPIServiceArguments.sortDirection = sortDirection;
+    }
+    if (filter) {
+      gqlAPIServiceArguments.filter = filter;
+    }
+    if (limit) {
+      gqlAPIServiceArguments.limit = limit;
+    }
+    if (nextToken) {
+      gqlAPIServiceArguments.nextToken = nextToken;
+    }
+    const response = (await API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    )) as any;
+    return <ShopItemsByCategoryIDQuery>response.data.shopItemsByCategoryID;
+  }
+  OnCreateCategoryListener(
+    filter?: ModelSubscriptionCategoryFilterInput
+  ): Observable<
+    SubscriptionResponse<Pick<__SubscriptionContainer, "onCreateCategory">>
+  > {
+    const statement = `subscription OnCreateCategory($filter: ModelSubscriptionCategoryFilterInput) {
+        onCreateCategory(filter: $filter) {
+          __typename
+          id
+          name
+          description
+          active
+          image
+          ShopItems {
+            __typename
+            nextToken
+          }
+          createdAt
+          updatedAt
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {};
+    if (filter) {
+      gqlAPIServiceArguments.filter = filter;
+    }
+    return API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    ) as Observable<
+      SubscriptionResponse<Pick<__SubscriptionContainer, "onCreateCategory">>
+    >;
+  }
+
+  OnUpdateCategoryListener(
+    filter?: ModelSubscriptionCategoryFilterInput
+  ): Observable<
+    SubscriptionResponse<Pick<__SubscriptionContainer, "onUpdateCategory">>
+  > {
+    const statement = `subscription OnUpdateCategory($filter: ModelSubscriptionCategoryFilterInput) {
+        onUpdateCategory(filter: $filter) {
+          __typename
+          id
+          name
+          description
+          active
+          image
+          ShopItems {
+            __typename
+            nextToken
+          }
+          createdAt
+          updatedAt
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {};
+    if (filter) {
+      gqlAPIServiceArguments.filter = filter;
+    }
+    return API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    ) as Observable<
+      SubscriptionResponse<Pick<__SubscriptionContainer, "onUpdateCategory">>
+    >;
+  }
+
+  OnDeleteCategoryListener(
+    filter?: ModelSubscriptionCategoryFilterInput
+  ): Observable<
+    SubscriptionResponse<Pick<__SubscriptionContainer, "onDeleteCategory">>
+  > {
+    const statement = `subscription OnDeleteCategory($filter: ModelSubscriptionCategoryFilterInput) {
+        onDeleteCategory(filter: $filter) {
+          __typename
+          id
+          name
+          description
+          active
+          image
+          ShopItems {
+            __typename
+            nextToken
+          }
+          createdAt
+          updatedAt
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {};
+    if (filter) {
+      gqlAPIServiceArguments.filter = filter;
+    }
+    return API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    ) as Observable<
+      SubscriptionResponse<Pick<__SubscriptionContainer, "onDeleteCategory">>
+    >;
+  }
+
   OnCreateShopItemListener(
     filter?: ModelSubscriptionShopItemFilterInput
   ): Observable<
@@ -467,6 +1003,7 @@ export class APIService {
           image
           active
           special_offer
+          categoryID
           createdAt
           updatedAt
         }
@@ -497,6 +1034,7 @@ export class APIService {
           image
           active
           special_offer
+          categoryID
           createdAt
           updatedAt
         }
@@ -527,6 +1065,7 @@ export class APIService {
           image
           active
           special_offer
+          categoryID
           createdAt
           updatedAt
         }

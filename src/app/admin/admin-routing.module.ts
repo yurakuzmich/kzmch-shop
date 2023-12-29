@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AdminComponent } from './admin/admin.component';
-import { AddItemComponent } from './add-item/add-item.component';
-import { CategoriesListAdminComponent } from './categories-list-admin/categories-list-admin.component';
-import { ListItemsAdminComponent } from './list-items-admin/list-items-admin.component';
+import { AdminComponent } from './layout/admin/admin.component';
+import { AddItemComponent } from './shop-items/add-item/add-item.component';
+import { CategoriesListAdminComponent } from './categories/categories-list-admin/categories-list-admin.component';
+import { ListItemsAdminComponent } from './shop-items/list-items-admin/list-items-admin.component';
 
 const routes: Routes = [
   { path: '',

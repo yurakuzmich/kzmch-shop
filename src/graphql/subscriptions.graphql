@@ -1,5 +1,56 @@
 # this is an auto generated file. This will be overwritten
 
+subscription OnCreateCategory($filter: ModelSubscriptionCategoryFilterInput) {
+  onCreateCategory(filter: $filter) {
+    id
+    name
+    description
+    active
+    image
+    ShopItems {
+      nextToken
+      __typename
+    }
+    createdAt
+    updatedAt
+    __typename
+  }
+}
+
+subscription OnUpdateCategory($filter: ModelSubscriptionCategoryFilterInput) {
+  onUpdateCategory(filter: $filter) {
+    id
+    name
+    description
+    active
+    image
+    ShopItems {
+      nextToken
+      __typename
+    }
+    createdAt
+    updatedAt
+    __typename
+  }
+}
+
+subscription OnDeleteCategory($filter: ModelSubscriptionCategoryFilterInput) {
+  onDeleteCategory(filter: $filter) {
+    id
+    name
+    description
+    active
+    image
+    ShopItems {
+      nextToken
+      __typename
+    }
+    createdAt
+    updatedAt
+    __typename
+  }
+}
+
 subscription OnCreateShopItem($filter: ModelSubscriptionShopItemFilterInput) {
   onCreateShopItem(filter: $filter) {
     id
@@ -9,6 +60,7 @@ subscription OnCreateShopItem($filter: ModelSubscriptionShopItemFilterInput) {
     image
     active
     special_offer
+    categoryID
     createdAt
     updatedAt
     __typename
@@ -24,6 +76,7 @@ subscription OnUpdateShopItem($filter: ModelSubscriptionShopItemFilterInput) {
     image
     active
     special_offer
+    categoryID
     createdAt
     updatedAt
     __typename
@@ -39,6 +92,7 @@ subscription OnDeleteShopItem($filter: ModelSubscriptionShopItemFilterInput) {
     image
     active
     special_offer
+    categoryID
     createdAt
     updatedAt
     __typename
