@@ -12,6 +12,8 @@ import { AddItemComponent } from './shop-items/add-item/add-item.component';
 import { SignOutAdminComponent } from './layout/sign-out-admin/sign-out-admin.component';
 import { MenuAdminComponent } from './layout/menu-admin/menu-admin.component';
 import { CategoriesListAdminComponent } from './categories/categories-list-admin/categories-list-admin.component';
+import { CategoryEditComponent } from './categories/category-edit/category-edit.component';
+import { AddCategoryComponent } from './categories/add-category/add-category.component';
 
 
 @NgModule({
@@ -24,6 +26,8 @@ import { CategoriesListAdminComponent } from './categories/categories-list-admin
     SignOutAdminComponent,
     MenuAdminComponent,
     CategoriesListAdminComponent,
+    CategoryEditComponent,
+    AddCategoryComponent,
   ],
   imports: [
     CommonModule,

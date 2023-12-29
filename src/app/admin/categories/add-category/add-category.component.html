@@ -1,0 +1,42 @@
+<div class="form-wrapper">
+  <div>
+    <form autocomplete="off"
+      [formGroup]="createForm">
+      <div class="form-field">
+        <label for="itemName">Name: </label>
+        <input type="text" id="itemName" formControlName="name" autocomplete="off" />
+      </div>
+      <div class="form-field">
+        <label for="itemDescription">Description: </label>
+        <input type="text" id="itemDescription" formControlName="description" autocomplete="off" />
+      </div>
+      <div class="form-field">
+        <label for="parentCaategory">Parent Category: </label>
+        <!-- <input type="text" id="parentCaategory" formControlName="parent_category" autocomplete="off" /> -->
+        <select id="parentCaategory" formControlName="parent_category">
+          <option value="0">---Root---</option>
+          <option value="option2">Option 2</option>
+          <option value="option3">Option 3</option>
+        </select>
+      </div>
+      <div class="form-field">
+        <label for="isActive">Active:</label>
+        <input type="checkbox" id="isActive" name="isActive" formControlName="active">
+      </div>
+      <!-- <div *ngIf="!isImageLoaded" class="form-field">
+        <label for="itemImage">Image: </label>
+        <input type="file" id="itemImage" (change)="onImageSelected($event)">
+      </div>
+      <div *ngIf="isImageLoading" class="form-field">
+        IMG IS LOADING. PLEASE WAIT...
+      </div> -->
+      <!-- <button type="submit"  [disabled]="isSubmitDisabled">Submit</button> -->
+    </form>
+  </div>
+</div>
+
+<div class="submit">
+  <button [disabled]="isSubmitDisabled" (click)="onCreate(createForm.value)">Save Item</button>
+</div>
+
+

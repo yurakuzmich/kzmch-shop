@@ -1,10 +1,11 @@
 type Category @model @auth(rules: [{allow: public}]) {
   id: ID!
-  name: String
+  name: String!
   description: String
   active: Boolean
   image: String
   ShopItems: [ShopItem] @hasMany(indexName: "byCategory", fields: ["id"])
+  parent_category: ID
 }
 
 type ShopItem @model @auth(rules: [{allow: public}]) {
@@ -15,6 +16,6 @@ type ShopItem @model @auth(rules: [{allow: public}]) {
   image: String
   active: Boolean!
   special_offer: Boolean
-  categoryID: ID! @index(name: "byCategory")
+  categoryID: ID @index(name: "byCategory")
 }
  
